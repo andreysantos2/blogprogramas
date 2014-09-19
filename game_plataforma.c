@@ -52,7 +52,21 @@ void comeca(){
   while(0==0){
   	 if(!kbhit()){
 	 	if(trocaMostra3()==1){
-	 		pular();
+            if(X<9&&subir==0){
+               aX=X;
+		       aY=Y;
+               X=X+1;
+               escrevePlayer(X, Y, aX, aY);
+            }
+            if(X>6&&subir==1){
+               aX=X;
+		       aY=Y;
+               X=X-1;
+               escrevePlayer(X, Y, aX, aY);
+               if(X==6){
+                  subir=0;
+               }
+            }
 	 		mostra();
 	 		trocaMostra=0;
 	 	}else{
@@ -81,21 +95,35 @@ void comeca(){
      	}
      	if(tecla==72){
 	        escreveTexto(9, 29, 'C');
-     		if((X>0)&&(subir==0)){
+     		if((X>=9)&&(subir==0)){
      			subir=1;
-     			descer=1;
     	    }
       	}
  	    if(tecla==80){
              escreveTexto(9, 29, 'B');
-     		 if((X<9)){
+     		/* if((X<9)){
         	     aX=X;
         		 aY=Y;
         		 X=X+1;
         		 escrevePlayer(X, Y, aX, aY);
-    		  }
+    		  }*/
   	    }
      	if(trocaMostra3()==1){
+             if(X<9&&subir==0){
+               aX=X;
+		       aY=Y;
+               X=X+1;
+               escrevePlayer(X, Y, aX, aY);
+             }  
+             if(X>=6&&subir==1){
+               aX=X;
+		       aY=Y;
+               X=X-1;
+               escrevePlayer(X, Y, aX, aY);
+               if(X==6){
+                  subir=0;
+               }
+             }            
 			 mostra();
 			 trocaMostra=0;
 	 	}else{
@@ -104,27 +132,6 @@ void comeca(){
  	}
   }	
  // morreu();
-}
-void pular(){
-   	 if(cont-contSubiu<20&&subir==1){
-   	 	aX=X;
-		aY=Y;
-        X=X-1;
-        escrevePlayer(X, Y, aX, aY);
-        descer=1;
-   	 }
-	 if(cont-contSubiu>20&&descer==1){
-   	 	contDesceu=cont;
-		aX=X;
-        aY=Y;
-        X=X+1;
-        escrevePlayer(X, Y, aX, aY);
-        subir=0;
-   	 }
-   	 if(cont-contDesceu>20&&descer==1){
-        descer=0;
-   	 }
-	return;
 }
 
 int trocaMostra3(){	
